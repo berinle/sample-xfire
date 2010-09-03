@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<import resource="classpath:org/codehaus/xfire/spring/xfire.xml"/>
+	
+	<bean id="employeeService" class="com.berinle.EmployeeServiceImpl"/>
+	<bean id="employeeService.xfire"
+		class="org.codehaus.xfire.spring.remoting.XFireExporter">
+		<property name="serviceFactory" ref="xfire.serviceFactory"/>
+		<property name="xfire" ref="xfire"/>
+		<property name="serviceBean" ref="employeeService"/>
+		<property name="serviceClass" value="com.berinle.EmployeeService"/>
+	</bean>
+
+</beans>

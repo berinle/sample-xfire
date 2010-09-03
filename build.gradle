@@ -1,0 +1,33 @@
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'jetty'
+
+sourceCompatibility = 1.5
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	/*compile ('org.codehaus.xfire:xfire-spring:1.2.6'){
+		exclude module: 'XmlSchema'
+	}*/	
+	compile 'org.springframework:spring-web:2.5.6'
+	compile 'org.springframework:spring-webmvc:2.5.6'
+	compile 'org.springframework:spring-aop:2.5.6'
+	
+	compile ('org.codehaus.xfire:xfire-jaxws:1.2.6'){
+		exclude module: 'XmlSchema'
+		exclude module: 'spring'
+	}	
+	compile 'org.apache.ws.commons:XmlSchema:1.0.3@jar'
+	//compile 'junit:junit:4.6'
+}
+
+task init(description: 'creates default project structure') << {
+	sourceSets.all*.java.srcDirs*.each { it.mkdirs() }	
+}
+
+task listJars << {
+	configurations.runtime.each { File file -> println file.name }
+}
