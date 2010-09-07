@@ -1,3 +1,9 @@
 Basic sample of using spring's xfire components to expose a web service
 
 It uses spring 2.5.6 and xfire 1.2.6
+
+Based on recommendations in http://www.guj.com.br/posts/list/197942.java, send date objects as
+string to avoid all the headaches with date adapters. Still researching how to get over the xfire
+error
+
+Caused by: org.codehaus.xfire.fault.XFireFault: Could not parse xs:dateTime: Format.parseObject(String) failed
