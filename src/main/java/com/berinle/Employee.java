@@ -1,6 +1,7 @@
 package com.berinle;
 
 import java.util.Date;
+import java.util.List;
 
 public class Employee {	
 	
@@ -10,11 +11,22 @@ public class Employee {
 	private String employeeNo;
 	private Date dob;
 	private String dobAsString;
+	private List<String> myList;
+	
+	
 	//private Date createdDate;
 	//private Date lastUpdated;
 	
 	public String toString(){
-		return firstName+", "+lastName+", "+userName+", "+employeeNo+", "+dob+", "+dobAsString;
+		StringBuffer sb = new StringBuffer( firstName+", "+lastName+", "+userName+", "+employeeNo+", "+dob+", "+dobAsString);
+		if(myList != null){
+			sb.append("\t[");
+			for(String s: myList){
+				sb.append(s+", ");
+			}
+			sb.append("]");
+		}
+		return sb.toString();
 	}
 	
 	public String getDobAsString(){
@@ -63,6 +75,22 @@ public class Employee {
 	
 	public void setDob(Date dob){
 		this.dob = dob;
+	}
+	
+	/**
+	 * Setter for myList.
+	 * @param newMyList new value for myList
+	 */
+	public void setMyList(List<String> newMyList) {
+	    myList = newMyList;
+	}
+	
+	/**
+	 * Getter for myList.
+	 * @return myList
+	 */
+	public List<String> getMyList() {
+	    return myList;
 	}
 		
 }
